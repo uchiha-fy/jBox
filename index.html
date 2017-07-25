@@ -7,25 +7,33 @@
 	<link rel="stylesheet" href="./Notice/jBox.Notice.css">
 	<link rel="stylesheet" href="./themes/TooltipDark.css">
 	<link rel="stylesheet" href="./themes/NoticeFancy.css">
+	<style>
+		.container{width:600px;margin:50px auto 0;border:1px solid dotted;}
+		.container span{display:inline-block;*display:inline-block;padding:5px;border:1px solid #ccc;border-radius:4px;}
+		.container button{padding:5px;border:1px solid #ccc;background-color:#fff;border-radius:4px;}
+		.container>div:first-child{margin-bottom:60px;}
+		.container>div{margin-bottom:10px;}
+	</style>
 </head>
 <body>
-	<div style="padding-top:50px">
+	<div class="container">
+	<div>
 		<span class="tooltip-normal">Hover me</span>
 		<span class="tooltip">Hover me</span>
 		<span class="tooltip-follow">Hover me</span>
 	</div>
 	<div>
 		<button id="modal">Click me</button>
-		<button id="modal1">Click me</button>
 	</div>
 	<div>
+		<p>以下按钮可重复点击</p>
 		<button class="notice-1">Click me</button>
 		<button class="notice-2">Click me</button>
 		<button class="notice-3">Click me</button>
 		<button class="notice-4">Click me</button>
 	</div>
-	<div style="height:1000px;width:100px;background-color:red;"></div>
-	<script src="js/jQuery-1.11.3.min.js"></script>
+	</div>
+	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/jBox.min.js"></script>
 	<script src="./Notice/jBox.Notice.min.js"></script>
 	<script>
@@ -65,7 +73,11 @@
 		$('.notice-1').click(function(){
 			new jBox('Notice', {
 				content:'给你个警告看看',
-				color:'black'
+				color:'black',
+				attributes: {
+				  x: 'left',
+				  y: 'top'
+				}
 			});
 		});
 		$('.notice-2').click(function(){
