@@ -7,9 +7,15 @@
 	<link rel="stylesheet" href="./Notice/jBox.Notice.css">
 	<link rel="stylesheet" href="./themes/TooltipDark.css">
 	<link rel="stylesheet" href="./themes/NoticeFancy.css">
+	<style>
+		.container{width:1000px;margin:50px auto 0;border:1px solid dotted;}
+		.container span{display:inline-block;*display:inline-block;padding:5px;border:1px solid #ccc;border-radius:4px;}
+		.container button{padding:5px;border:1px solid #ccc;background-color:#fff;border-radius:4px;}
+	</style>
 </head>
 <body>
-	<div style="padding-top:50px">
+	<div class="container">
+	<div>
 		<span class="tooltip-normal">Hover me</span>
 		<span class="tooltip">Hover me</span>
 		<span class="tooltip-follow">Hover me</span>
@@ -22,6 +28,7 @@
 		<button class="notice-2">Click me</button>
 		<button class="notice-3">Click me</button>
 		<button class="notice-4">Click me</button>
+	</div>
 	</div>
 	<script src="js/jquery-1.11.3.min.js"></script>
 	<script src="js/jBox.min.js"></script>
