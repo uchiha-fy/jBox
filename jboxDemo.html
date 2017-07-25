@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Document</title>
+	<link rel="stylesheet" href="./css/jBox.min.css">
+	<link rel="stylesheet" href="./Notice/jBox.Notice.css">
+	<link rel="stylesheet" href="./themes/TooltipDark.css">
+	<link rel="stylesheet" href="./themes/NoticeFancy.css">
+</head>
+<body>
+	<div style="padding-top:50px">
+		<span class="tooltip-normal">Hover me</span>
+		<span class="tooltip">Hover me</span>
+		<span class="tooltip-follow">Hover me</span>
+	</div>
+	<div>
+		<button id="modal">Click me</button>
+		<button id="modal1">Click me</button>
+	</div>
+	<div>
+		<button class="notice-1">Click me</button>
+		<button class="notice-2">Click me</button>
+		<button class="notice-3">Click me</button>
+		<button class="notice-4">Click me</button>
+	</div>
+	<div style="height:1000px;width:100px;background-color:red;"></div>
+	<script src="js/jQuery-1.11.3.min.js"></script>
+	<script src="js/jBox.min.js"></script>
+	<script src="./Notice/jBox.Notice.min.js"></script>
+	<script>
+		//tooltip--提示框
+		new jBox('Tooltip',{
+		  attach:'.tooltip-normal',
+		  content:'基本提示框',
+		});
+		new jBox('Tooltip',{
+		  attach:'.tooltip',
+		  content:'提示框配置',
+		  position:{x:'center',y:'bottom'},//提示框位置，默认为中上
+		  theme:'TooltipDark',//若要使用该黑色背景主题，需先引入TooltipDark.css
+		  animation:'move',//提示框出现或离开时动画，move/zoomIn较为美观
+		});
+		new jBox('Mouse',{//提示框跟随鼠标
+		  attach:'.tooltip-follow',
+		  position:{x:'right',y:'bottom'},
+		  content:'提示框跟随鼠标'
+		});
+
+		//modal--模态窗口
+		new jBox('Modal', {
+		  attach:'#modal',
+		  height:200,//内容content的总高度=padding(上下各15px)+height
+		  width:400,//内容content的总宽度=padding(左右各15px)+height
+		  title:'标题',
+		  content:'内容，可以加标签如div',//以上为基本配置
+		  animation:'zoomIn',
+		  draggable:'title',//在标题区域可拖动
+		  closeButton:'title',//在标题区域设置关闭模态窗口按钮
+		  overlay:true//默认为true，有黑色背景。设置为false则没有背景
+		});
+		
+		//notice--注意框
+		//配合if语句，若为true，则继续逻辑，若为false，则给予注意框提醒用户
+		$('.notice-1').click(function(){
+			new jBox('Notice', {
+				content:'给你个警告看看',
+				color:'black'
+			});
+		});
+		$('.notice-2').click(function(){
+		    new jBox('Notice',{
+		    	animation:'flip',
+		    	color: getColor(),
+		    	content:'给你个警告看看'
+		    });
+		});
+		$('.notice-3').click(function(){
+			new jBox('Notice', {
+				theme:'NoticeFancy',//设置主题样式，要引入主题
+				attributes: {
+				  x: 'left',
+				  y: 'bottom'
+				},
+				color: getColor(),
+				content:'给你个警告看看',
+				audio:'./audio/bling2',//可以配合声音
+				volume: 80,//可以配合声音
+				animation: {open:'slide:bottom',close:'slide:left'}
+			});  
+		});
+		$('.notice-4').click(function(){
+			new jBox('Notice',{
+				attributes:{//注意框所在位置
+				  x:'right',
+				  y:'bottom'
+				},
+				stack: false,
+				animation: {
+				  open:'tada',
+				  close:'zoomIn'
+				},
+				color:getColor(),//设置颜色
+				title:'我是标题',
+				content:'给你个警告看看'
+			}); 
+		});
+		var colors=['red','green','blue','yellow'],//设置颜色
+			index=0;
+		var getColor=function(){
+		  (index>=colors.length)&&(index = 0);
+		  return colors[index++];
+		};
+	</script>
+</body>
+</html>
